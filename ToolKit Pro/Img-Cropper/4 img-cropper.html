@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Passport Photo Cropper - All Countries (MM Dimensions)</title>
+    <meta name="description" content="Free online tool to crop your image to official passport photo size dimensions (in mm) for any country. Responsive, easy to use, and accurate.">
+    <meta name="keywords" content="passport photo, cropper, image crop, passport size, photo dimensions, mm, visa photo, online tool, free, responsive, all countries">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="YOUR_WEBSITE_URL_HERE"> <!-- Replace with your actual URL -->
+
+    <!-- Favicon (Optional but Recommended) -->
+    <!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
+
+    <!-- Cropper.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google AdSense Auto Ads Script (Optional) -->
+    <!-- Paste your AdSense Auto Ads code here if you use it -->
+    <!-- Example: <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID" crossorigin="anonymous"></script> -->
+
+</head>
+<body>
+
+    <header class="header">
+        <h1>Passport Photo Cropper Tool</h1>
+        <p>Crop images to official passport photo sizes (mm) for various countries.</p>
+    </header>
+
+    <!-- Top Banner Ad Space -->
+    <div class="ad-space ad-banner-top">
+        <p class="ad-placeholder-text">Advertisement</p>
+        <!-- === PASTE YOUR GOOGLE ADSENSE AD UNIT CODE HERE (e.g., Display Ad) === -->
+        <!-- Example Ad Unit Code Structure:
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+             crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+             data-ad-slot="YOUR_AD_SLOT_ID"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+         -->
+        <!-- === END AD UNIT CODE === -->
+    </div>
+
+    <main class="main-content">
+
+        <section class="controls-section">
+            <h2>1. Select Country & Upload Image</h2>
+            <div class="control-group">
+                <label for="country-select">Select Country:</label>
+                <select id="country-select">
+                    <option value="">-- Select Country --</option>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+                <span id="dimension-display" class="dimension-info"></span>
+            </div>
+
+            <div class="control-group">
+                <label for="image-input">Upload Image:</label>
+                <input type="file" id="image-input" accept="image/png, image/jpeg, image/webp">
+            </div>
+             <p class="note"><strong>Note:</strong> Ensure your photo meets other requirements (background color, head position, expression) set by the specific country.</p>
+        </section>
+
+        <section class="cropper-section">
+            <h2>2. Crop Your Photo</h2>
+            <div class="cropper-container">
+                <img id="cropper-image" src="#" alt="Image to be cropped">
+            </div>
+             <div class="crop-actions">
+                 <button id="crop-button" class="btn" disabled>Crop & Preview</button>
+                 <p class="crop-instructions">Adjust the box to fit the required head position.</p>
+             </div>
+        </section>
+
+        <section class="preview-download-section">
+            <h2>3. Preview & Download</h2>
+             <div class="preview-container">
+                 <h3>Preview:</h3>
+                <div class="img-preview-container">
+                     <div class="img-preview" style="overflow: hidden;"></div>
+                 </div>
+                 <p id="output-resolution"></p>
+            </div>
+            <div class="download-container">
+                <a id="download-link" class="btn btn-download" href="#" download="passport_photo.jpg" style="display: none;">Download Cropped Photo (JPG)</a>
+                 <a id="download-link-png" class="btn btn-download" href="#" download="passport_photo.png" style="display: none;">Download Cropped Photo (PNG)</a>
+            </div>
+        </section>
+
+         <!-- In-Article Ad Space -->
+         <div class="ad-space ad-in-article">
+            <p class="ad-placeholder-text">Advertisement</p>
+             <!-- === PASTE YOUR GOOGLE ADSENSE AD UNIT CODE HERE (e.g., In-article Ad) === -->
+             <!-- Example Ad Unit Code Structure -->
+             <!-- === END AD UNIT CODE === -->
+         </div>
+
+        <section class="instructions-seo">
+            <h2>How to Use the Passport Photo Cropper</h2>
+            <ol>
+                <li>Select the target country from the dropdown list. The required dimensions (in millimeters) will be shown.</li>
+                <li>Click "Upload Image" and choose a high-quality photo from your device.</li>
+                <li>An adjustable crop box will appear over your image, maintaining the correct aspect ratio for the selected country.</li>
+                <li>Move and resize the crop box to frame your head and shoulders according to typical passport photo guidelines (check specific country rules).</li>
+                <li>Click the "Crop & Preview" button.</li>
+                <li>Review the preview. The final image will be generated at a standard resolution (e.g., 300 DPI) matching the required physical size.</li>
+                <li>Click "Download Cropped Photo" (JPG or PNG) to save the image to your device.</li>
+            </ol>
+            <h2>Why Use This Tool?</h2>
+            <p>Getting passport or visa photos correctly sized can be tricky. This tool simplifies the process by providing standard dimensions for many countries and an easy-to-use cropping interface. It ensures your digital image meets the size requirements before you print it.</p>
+            <p><strong>Disclaimer:</strong> While this tool sets the correct dimensions and aspect ratio, always double-check the *latest* official passport photo requirements for your specific country regarding background, head size percentage, expression, and forbidden items (glasses, headwear unless for religious reasons).</p>
+         </section>
+
+    </main>
+
+    <!-- Bottom Banner Ad Space -->
+    <div class="ad-space ad-banner-bottom">
+        <p class="ad-placeholder-text">Advertisement</p>
+        <!-- === PASTE YOUR GOOGLE ADSENSE AD UNIT CODE HERE (e.g., Display Ad) === -->
+        <!-- Example Ad Unit Code Structure -->
+        <!-- === END AD UNIT CODE === -->
+    </div>
+
+    <footer class="footer">
+        <p>© <span id="year"></span> Your Website Name. All Rights Reserved.</p>
+        <!-- Add privacy policy/terms links if applicable -->
+    </footer>
+
+    <!-- Cropper.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

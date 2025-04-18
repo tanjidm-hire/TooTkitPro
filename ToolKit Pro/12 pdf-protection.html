@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to protect your PDF files with passwords, encryption, and permissions. Secure your documents in seconds.">
+    <meta name="keywords" content="PDF protection, secure PDF, password protect PDF, encrypt PDF, PDF security">
+    <meta name="author" content="PDF Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free PDF Protection Tool | Secure Your Documents Online">
+    <meta property="og:description" content="Protect your PDF files with passwords and encryption. Free online tool with no installation required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/protect-pdf">
+    
+    <title>Protect PDF Online - Free PDF Encryption Tool | PDF Tools</title>
+    
+    <link rel="canonical" href="https://yourdomain.com/protect-pdf">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray-color);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .ad-banner {
+            background-color: #f1f3f4;
+            padding: 15px;
+            margin: 20px auto;
+            text-align: center;
+            border-radius: var(--border-radius);
+            max-width: 970px;
+        }
+        
+        .ad-banner p {
+            color: var(--gray-color);
+            margin-bottom: 10px;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 800px;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--gray-color);
+            border-radius: var(--border-radius);
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 30px;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+        
+        .upload-area i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .upload-area h3 {
+            margin-bottom: 10px;
+        }
+        
+        .upload-area p {
+            color: var(--gray-color);
+        }
+        
+        #file-input {
+            display: none;
+        }
+        
+        .settings {
+            margin-bottom: 30px;
+        }
+        
+        .setting-group {
+            margin-bottom: 20px;
+        }
+        
+        .setting-group h4 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #3367d6;
+            transform: translateY(-2px);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .btn-secondary {
+            background-color: var(--gray-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #4d5156;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            display: none;
+        }
+        
+        .status.success {
+            background-color: rgba(52, 168, 83, 0.1);
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+            display: block;
+        }
+        
+        .status.error {
+            background-color: rgba(234, 67, 53, 0.1);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            display: block;
+        }
+        
+        .file-info {
+            display: none;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+        }
+        
+        .file-info.show {
+            display: block;
+        }
+        
+        .file-info p {
+            margin-bottom: 5px;
+        }
+        
+        .file-info p strong {
+            color: var(--dark-color);
+        }
+        
+        .download-btn {
+            display: none;
+            margin-top: 20px;
+        }
+        
+        .download-btn.show {
+            display: inline-block;
+        }
+        
+        .features {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .feature-card p {
+            color: var(--gray-color);
+        }
+        
+        .ad-sidebar {
+            display: none;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc1c6;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #3c4043;
+            color: #bdc1c6;
+            font-size: 14px;
+        }
+        
+        @media (min-width: 992px) {
+            .main-content {
+                display: grid;
+                grid-template-columns: 1fr 300px;
+                gap: 30px;
+                align-items: start;
+            }
+            
+            .ad-sidebar {
+                display: block;
+                position: sticky;
+                top: 100px;
+            }
+            
+            .sidebar-ad {
+                background-color: #f1f3f4;
+                padding: 15px;
+                margin-bottom: 20px;
+                border-radius: var(--border-radius);
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 15px 0;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: var(--box-shadow);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .tool-container {
+                padding: 20px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 20px auto;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .spinner.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/12 pdf-protection.html" class="logo">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>PDF Protection</span>
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/tools">All Tools</a></li>
+                        <li><a href="/Contact.html">About</a></li>
+                        <li><a href="/Contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Protect Your PDF Files</h1>
+            <p>Secure your sensitive documents with password protection, encryption, and permission restrictions. Our free online tool makes it easy to safeguard your PDFs in just a few clicks.</p>
+            
+            <!-- Top Ad Banner -->
+            <div class="ad-banner">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+                <!-- ProtectPDF_Top_Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </section>
+    
+    <main class="container main-content">
+        <div class="tool-content">
+            <div class="tool-container">
+                <h2>Protect PDF Tool</h2>
+                <p>Upload your PDF file and set security options below</p>
+                
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop your PDF file here</h3>
+                    <p>or click to browse files</p>
+                    <input type="file" id="file-input" accept=".pdf">
+                </div>
+                
+                <div class="file-info" id="file-info">
+                    <p><strong>File name:</strong> <span id="file-name"></span></p>
+                    <p><strong>File size:</strong> <span id="file-size"></span></p>
+                    <button class="btn btn-secondary" id="change-file">Change File</button>
+                </div>
+                
+                <div class="settings">
+                    <div class="setting-group">
+                        <h4>Password Protection</h4>
+                        <input type="password" id="user-password" class="form-control" placeholder="User password (required to open the file)">
+                        <input type="password" id="owner-password" class="form-control" placeholder="Owner password (required to change permissions)">
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h4>Permissions</h4>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="allow-printing" checked>
+                            <label for="allow-printing">Allow printing</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="allow-modification" checked>
+                            <label for="allow-modification">Allow modification</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="allow-copying" checked>
+                            <label for="allow-copying">Allow copying</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="allow-forms" checked>
+                            <label for="allow-forms">Allow form filling</label>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h4>Encryption Level</h4>
+                        <select id="encryption-level" class="form-control">
+                            <option value="128">128-bit AES (Recommended)</option>
+                            <option value="256">256-bit AES (Strongest)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="btn btn-block" id="protect-btn">Protect PDF</button>
+                
+                <div class="spinner" id="spinner"></div>
+                
+                <div class="status" id="status"></div>
+                
+                <a href="#" class="btn btn-block download-btn" id="download-btn" download>
+                    <i class="fas fa-download"></i> Download Protected PDF
+                </a>
+            </div>
+            
+            <!-- Middle Ad Banner -->
+            <div class="ad-banner">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+                <!-- ProtectPDF_Middle_Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        
+        <div class="ad-sidebar">
+            <!-- Sidebar Ad 1 -->
+            <div class="sidebar-ad">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+                <!-- ProtectPDF_Sidebar_1 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <!-- Sidebar Ad 2 -->
+            <div class="sidebar-ad">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+                <!-- ProtectPDF_Sidebar_2 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </main>
+    
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Protect Your PDF Files?</h2>
+                <p>Our PDF protection tool offers comprehensive security features to keep your documents safe from unauthorized access and modifications.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Strong Encryption</h3>
+                    <p>Protect your PDFs with industry-standard 128-bit or 256-bit AES encryption to prevent unauthorized access.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Password Protection</h3>
+                    <p>Set separate passwords for users and owners to control who can view and modify your documents.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-ban"></i>
+                    <h3>Permission Control</h3>
+                    <p>Restrict printing, copying, editing, and form filling to maintain document integrity.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud-Based</h3>
+                    <p>No software installation required. Protect your PDFs directly in your browser.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Processing</h3>
+                    <p>Our optimized algorithms protect your files quickly without compromising security.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Handling</h3>
+                    <p>Your files are processed securely and deleted from our servers after processing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bottom Ad Banner -->
+    <div class="container">
+        <div class="ad-banner">
+            <p>Advertisement</p>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+            <!-- ProtectPDF_Bottom_Banner -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PDF Tools</h3>
+                    <ul>
+                        <li><a href="/Contact.html">About Us</a></li>
+                        <li><a href="/tools">All Tools</a></li>
+                        <li><a href="/privacy-policy.txt">Privacy Policy</a></li>
+                        <li><a href="/privacy-policy.txt">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>PDF Tools</h3>
+                    <ul>
+                        <li><a href="/14 marge-PDF.html">Merge PDF</a></li>
+                        <li><a href="/15 split-pdf.html">Split PDF</a></li>
+                        <li><a href="/11 compress-pdf.html">Compress PDF</a></li>
+                        <li><a href="/8 PDFToWord-Converter.html">PDF to Word</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="/Contact.html">Contact Us</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/Contact.html">Help Center</a></li>
+                        <li><a href="/Contact.html">Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> PDF Tools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // File upload functionality
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+        const fileInfo = document.getElementById('file-info');
+        const fileName = document.getElementById('file-name');
+        const fileSize = document.getElementById('file-size');
+        const changeFileBtn = document.getElementById('change-file');
+        const protectBtn = document.getElementById('protect-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const spinner = document.getElementById('spinner');
+        const statusDiv = document.getElementById('status');
+        
+        // Handle drag and drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            uploadArea.classList.add('highlight');
+        }
+        
+        function unhighlight() {
+            uploadArea.classList.remove('highlight');
+        }
+        
+        // Handle dropped files
+        uploadArea.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+        
+        // Handle clicked files
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+        
+        changeFileBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            fileInput.value = '';
+            fileInfo.classList.remove('show');
+            uploadArea.style.display = 'block';
+        });
+        
+        function handleFiles(files) {
+            if (files.length === 0) return;
+            
+            const file = files[0];
+            
+            // Check if file is PDF
+            if (!file.type.includes('pdf')) {
+                showStatus('Please upload a PDF file.', 'error');
+                return;
+            }
+            
+            // Update file info
+            fileName.textContent = file.name;
+            fileSize.textContent = formatFileSize(file.size);
+            
+            // Show file info and hide upload area
+            fileInfo.classList.add('show');
+            uploadArea.style.display = 'none';
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Protect PDF button click
+        protectBtn.addEventListener('click', function() {
+            if (!fileInput.files.length) {
+                showStatus('Please select a PDF file first.', 'error');
+                return;
+            }
+            
+            const userPassword = document.getElementById('user-password').value;
+            
+            if (!userPassword) {
+                showStatus('Please set at least a user password.', 'error');
+                return;
+            }
+            
+            // Show loading spinner
+            spinner.classList.add('active');
+            protectBtn.disabled = true;
+            statusDiv.style.display = 'none';
+            
+            // Simulate processing (in a real app, this would upload to a server)
+            setTimeout(() => {
+                // Hide spinner
+                spinner.classList.remove('active');
+                
+                // Show success message
+                showStatus('PDF protected successfully! You can now download your file.', 'success');
+                
+                // Show download button
+                downloadBtn.classList.add('show');
+                
+                // Enable protect button
+                protectBtn.disabled = false;
+                
+                // In a real application, you would set the download URL here
+                // downloadBtn.href = protectedFileUrl;
+            }, 2000);
+        });
+        
+        function showStatus(message, type) {
+            statusDiv.textContent = message;
+            statusDiv.className = 'status ' + type;
+            statusDiv.style.display = 'block';
+        }
+        
+        // For demo purposes, simulate file download
+        downloadBtn.addEventListener('click', function(e) {
+            if (!fileInput.files.length) {
+                e.preventDefault();
+                showStatus('No file to download.', 'error');
+                return;
+            }
+            
+            // In a real application, this would download the protected file
+            // For demo, we'll just show a message
+            e.preventDefault();
+            showStatus('Download would start in a real application.', 'success');
+        });
+        
+        // SEO: Track file uploads as conversions (example)
+        function trackConversion(action) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-YOUR_CONVERSION_ID/' + action,
+                    'value': 1.0,
+                    'currency': 'USD'
+                });
+            }
+        }
+    </script>
+    
+    <!-- Google Analytics (optional) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</body>
+</html>

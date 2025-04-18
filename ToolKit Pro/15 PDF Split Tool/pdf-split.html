@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Free Online PDF Splitter - Split PDF Files Easily | YourSiteName</title>
+    <meta name="description" content="Split your PDF documents online for free. Extract specific pages or divide PDFs into multiple files every N pages. Secure, fast, and browser-based.">
+    <meta name="keywords" content="pdf splitter, split pdf, online pdf splitter, free pdf splitter, extract pdf pages, divide pdf, pdf tool, secure pdf split">
+
+    <!-- Favicon (Replace with your own) -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- PDF-LIB Library (via CDN) -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+    <!-- Optional: JSZip for zipping multiple files (if implementing) -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script> -->
+
+    <!-- Google AdSense Script (Replace ca-pub-YOUR_PUBLISHER_ID with your actual ID) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+         crossorigin="anonymous"></script>
+
+    <!-- Main App Script (Deferred) -->
+    <script src="script.js" defer></script>
+
+</head>
+<body>
+
+    <header class="main-header">
+        <h1><a href="/">Online PDF Splitter</a></h1>
+        <p class="tagline">Easily split your PDF documents</p>
+
+        <!-- Ad Placeholder: Header Banner -->
+        <div class="ad-placeholder ad-placeholder-header">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID" <!-- Replace! -->
+                 ?
+                 <!-- Replace! -->
+                 ?
+                ?</ins>
+            <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+            <small class="ad-label">Advertisement</small>
+        </div>
+    </header>
+
+    <main class="main-content">
+
+        <section class="tool-section">
+            <h2>Split Your PDF File</h2>
+
+            <div class="upload-area">
+                <label for="pdfLoader" class="upload-button">Upload PDF</label>
+                <input type="file" id="pdfLoader" name="pdfLoader" accept="application/pdf">
+                <p id="fileName">No PDF selected</p>
+                <p id="fileInfo" class="dim-info"></p>
+                <p id="statusMessage" class="status-message"></p>
+            </div>
+
+            <div id="optionsPanel" class="options-panel" style="display: none;"> <!-- Hidden initially -->
+                <h3>Splitting Options</h3>
+
+                <div class="split-modes">
+                    <label>
+                        <input type="radio" name="splitMode" value="extract" checked> Extract Pages
+                    </label>
+                    <label>
+                        <input type="radio" name="splitMode" value="every"> Split Every N Pages
+                    </label>
+                </div>
+
+                <div id="extract-options" class="mode-options">
+                    <label for="pageRanges">Pages to Extract:</label>
+                    <input type="text" id="pageRanges" placeholder="e.g., 1, 3-5, 8">
+                    <small class="tool-note">Enter page numbers or ranges, separated by commas. Example: 1, 3-5, 8 extracts pages 1, 3, 4, 5, and 8.</small>
+                </div>
+
+                <div id="split-every-options" class="mode-options" style="display: none;">
+                    <label for="splitSize">Split Every:</label>
+                    <input type="number" id="splitSize" min="1" value="1"> Pages
+                    <small class="tool-note">Each resulting PDF will contain this many pages (except possibly the last one).</small>
+                </div>
+
+                <button id="splitBtn" class="action-button">Split PDF</button>
+            </div>
+
+            <div id="downloadArea" class="download-area">
+                <h3>Download Your Files</h3>
+                <div id="downloadLinks">
+                    <!-- Download links will be added here -->
+                    <p>Your split PDF files will appear here.</p>
+                </div>
+                 <small class="tool-note privacy-note">Your files are processed directly in your browser and are never uploaded to our servers.</small>
+            </div>
+
+        </section>
+
+        <aside class="sidebar-section">
+             <!-- Ad Placeholder: Sidebar -->
+            <div class="ad-placeholder ad-placeholder-sidebar">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID" <!-- Replace! -->
+                     ?
+                     <!-- Replace! -->
+                     ?
+                    ?</ins>
+                <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+                <small class="ad-label">Advertisement</small>
+            </div>
+
+            <div class="instructions">
+                <h3>How It Works</h3>
+                <ol>
+                    <li>Click "Upload PDF" and select your file.</li>
+                    <li>Choose your splitting mode: "Extract Pages" or "Split Every N Pages".</li>
+                    <li>Enter the required page numbers/range or the split size (N).</li>
+                    <li>Click "Split PDF".</li>
+                    <li>Download links for your new PDF(s) will appear below.</li>
+                </ol>
+            </div>
+        </aside>
+
+    </main>
+
+    <section class="seo-content">
+        <h2>Why Use Our Online PDF Splitter?</h2>
+        <p>Need to break down a large PDF document into smaller parts? Our free online PDF splitter is the perfect tool. Whether you need to extract specific pages for a report, separate chapters of an ebook, or divide a document into manageable chunks, our tool does it quickly and securely right in your web browser.</p>
+        <h3>Key Features:</h3>
+        <ul>
+            <li><strong>Extract Specific Pages:</strong> Easily pull out individual pages or ranges (like pages 2, 5-7, 10) into a new PDF.</li>
+            <li><strong>Split into Fixed Parts:</strong> Divide your PDF into multiple smaller PDFs, each containing a set number of pages (e.g., split every 2 pages).</li>
+            <li><strong>Completely Free:</strong> No hidden costs or sign-ups required.</li>
+            <li><strong>Secure & Private:</strong> Your PDF file is processed entirely within your browser using JavaScript. It's never uploaded to any server, ensuring your data remains confidential.</li>
+            <li><strong>Fast & Easy:</strong> Simple interface, quick processing directly on your device.</li>
+            <li><strong>No Installation:</strong> Works on any device with a modern web browser (Chrome, Firefox, Safari, Edge).</li>
+        </ul>
+        <p>Stop struggling with bulky PDF files. Use our PDF splitter today to organize your documents efficiently!</p>
+    </section>
+
+    <footer class="main-footer">
+         <!-- Ad Placeholder: Footer Banner (Optional) -->
+         <div class="ad-placeholder ad-placeholder-footer">
+             <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-YOUR_PUBLISHER_ID" <!-- Replace! -->
+                  ?
+                  <!-- Replace! -->
+                  ?
+                 ?</ins>
+             <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+             <small class="ad-label">Advertisement</small>
+         </div>
+        <p>© <span id="year"></span> YourSiteName. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+</body>
+</html>

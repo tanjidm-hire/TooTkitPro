@@ -1,0 +1,92 @@
+# **Privacy Policy for documents  Tool**
+
+Last Updated: **[Date]**
+
+## **1. Introduction**
+
+Welcome to our **ToolKit Pro**. We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard your information when you use our online documents  ment tool.
+
+By using our website, you agree to the terms of this Privacy Policy. If you do not agree, please do not use our services.
+
+---
+
+## **2. Information We Collect**
+
+### **a. Personal Information**
+We do **not** collect personally identifiable information (such as name, email, or address) unless you voluntarily provide it (e.g., through contact forms or feedback submissions).
+
+### **b. Non-Personal Information**
+We may collect:
+- **Browser & Device Data** (IP address, browser type, OS)
+- **Usage Data** (pages visited, time spent, interactions)
+- **Cookies & Tracking Technologies** (for analytics and ads)
+
+### **c. Uploaded documents** 
+- **All documents processing happens in your browser.**  
+- **We do not store, share, or upload your documents to our servers.**  
+- Once you close the browser tab, the documents data is deleted.
+
+---
+
+## **3. How We Use Your Information**
+
+We use collected data to:
+- Provide and improve our tools
+- Analyze website performance and user behavior
+- Display relevant advertisements (via Google AdSense)
+- Prevent fraud and ensure security
+
+---
+
+## **4. Google AdSense & Third-Party Ads**
+
+We use **Google AdSense** to display ads. Google may use cookies to personalize ads based on your browsing history.  
+- **Google’s Privacy Policy:** [https://policies.google.com/privacy](https://policies.google.com/privacy)  
+- You can opt out of personalized ads via [Google’s Ad Settings](https://adssettings.google.com/).
+
+Other third-party advertisers may also use cookies. We do not control their tracking technologies.
+
+---
+
+## **5. Cookies & Tracking Technologies**
+
+We use:
+- **Essential Cookies** (for website functionality)
+- **Analytics Cookies** (Google Analytics)
+- **Advertising Cookies** (Google AdSense)
+
+You can disable cookies in your browser settings, but some features may not work properly.
+
+---
+
+## **6. Data Security**
+
+- We implement industry-standard security measures.
+- Since images are processed locally, they are **not stored** on our servers.
+- However, no online transmission is 100% secure—use our tool at your own risk.
+
+---
+
+## **7. Children’s Privacy**
+
+Our service is **not intended for children under 13**. We do not knowingly collect data from minors.
+
+---
+
+## **8. Changes to This Policy**
+
+We may update this Privacy Policy. The latest version will always be posted here with the **"Last Updated"** date.
+
+---
+
+## **9. Contact Us**
+
+If you have questions about this Privacy Policy, please contact us at:  
+📧 **Email:** [hire2025@gmail.com](mailto:hire2025@gmail.com)  
+
+---
+
+### **Summary:**
+✅ **Your documents are never stored or shared.**  
+✅ **We use Google AdSense for ads (opt-out available).**  
+✅ **No unnecessary data collection.**  

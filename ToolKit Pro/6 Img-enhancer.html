@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online photo enhancement tool to improve your images instantly. Adjust brightness, contrast, saturation and more with our easy-to-use editor.">
+    <meta name="keywords" content="photo editor, image enhancer, photo filter, online photo tool, image quality improver">
+    <meta name="author" content="Photo Enhance Pro">
+    <meta property="og:title" content="Photo Enhance Tool | Free Online Image Quality Improver">
+    <meta property="og:description" content="Enhance your photos online for free with our powerful photo enhancement tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://photoenhance.example.com">
+    <meta property="og:image" content="https://photoenhance.example.com/preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://photoenhance.example.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <title>Photo Enhance Tool | Free Online Image Quality Improver</title>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Photo Enhance Tool",
+      "url": "https://photoenhance.example.com",
+      "description": "Free online tool to enhance and improve your photos",
+      "applicationCategory": "ImageEditor",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --medium-gray: #757575;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+        
+        main {
+            padding: 2rem 0;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .ad-container {
+            background-color: var(--light-gray);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            border-radius: 4px;
+            border: 1px dashed #ccc;
+        }
+        
+        .ad-label {
+            font-size: 0.8rem;
+            color: var(--medium-gray);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .tool-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .image-section {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+        
+        .controls-section {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--medium-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1.5rem;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .upload-text {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .upload-subtext {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+        }
+        
+        #fileInput {
+            display: none;
+        }
+        
+        .image-preview {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            display: none;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+        
+        .control-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .control-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .slider {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: #ddd;
+            outline: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        .slider-value {
+            width: 40px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .btn-secondary {
+            background-color: var(--medium-gray);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #616161;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .feature-desc {
+            color: var(--medium-gray);
+        }
+        
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.75rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 20px auto;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="/6 Img-enhancer.html" class="logo">Photo<span>Enhance</span></a>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="/Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Top Ad Banner -->
+        <div class="ad-container">
+            <span class="ad-label">Advertisement</span>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- Top Banner Ad -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <section class="hero">
+            <h1>Enhance Your Photos in Seconds</h1>
+            <p>Upload your image and use our powerful tools to adjust brightness, contrast, saturation and more. Get professional-looking photos with just a few clicks.</p>
+            <div class="btn-group">
+                <a href="#tool" class="btn">Try It Now</a>
+                <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+            </div>
+        </section>
+        
+        <!-- Middle Ad Banner -->
+        <div class="ad-container">
+            <span class="ad-label">Advertisement</span>
+            <!-- Replace with your Google AdSense code -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <section id="tool" class="tool-container">
+            <div class="image-section">
+                <h2 class="section-title">Your Image</h2>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">Click to Upload Image</div>
+                    <div class="upload-subtext">or drag and drop</div>
+                    <input type="file" id="fileInput" accept="image/*">
+                </div>
+                <img id="imagePreview" class="image-preview" alt="Preview of uploaded image">
+                <div class="spinner" id="spinner"></div>
+                <div class="action-buttons">
+                    <button id="resetBtn" class="btn btn-secondary" disabled>Reset</button>
+                    <button id="downloadBtn" class="btn" disabled>Download</button>
+                </div>
+            </div>
+            
+            <div class="controls-section">
+                <h2 class="section-title">Enhancement Tools</h2>
+                <div class="control-group">
+                    <label for="brightnessSlider" class="control-label">Brightness</label>
+                    <div class="slider-container">
+                        <input type="range" id="brightnessSlider" class="slider" min="-100" max="100" value="0">
+                        <span id="brightnessValue" class="slider-value">0</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="contrastSlider" class="control-label">Contrast</label>
+                    <div class="slider-container">
+                        <input type="range" id="contrastSlider" class="slider" min="-100" max="100" value="0">
+                        <span id="contrastValue" class="slider-value">0</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="saturationSlider" class="control-label">Saturation</label>
+                    <div class="slider-container">
+                        <input type="range" id="saturationSlider" class="slider" min="-100" max="100" value="0">
+                        <span id="saturationValue" class="slider-value">0</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="sharpnessSlider" class="control-label">Sharpness</label>
+                    <div class="slider-container">
+                        <input type="range" id="sharpnessSlider" class="slider" min="0" max="100" value="0">
+                        <span id="sharpnessValue" class="slider-value">0</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="temperatureSlider" class="control-label">Temperature</label>
+                    <div class="slider-container">
+                        <input type="range" id="temperatureSlider" class="slider" min="-100" max="100" value="0">
+                        <span id="temperatureValue" class="slider-value">0</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="vignetteSlider" class="control-label">Vignette</label>
+                    <div class="slider-container">
+                        <input type="range" id="vignetteSlider" class="slider" min="0" max="100" value="0">
+                        <span id="vignetteValue" class="slider-value">0</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="filterSelect" class="control-label">Filter</label>
+                    <select id="filterSelect" class="slider">
+                        <option value="none">None</option>
+                        <option value="grayscale">Grayscale</option>
+                        <option value="sepia">Sepia</option>
+                        <option value="invert">Invert</option>
+                        <option value="hue-rotate">Hue Rotate</option>
+                    </select>
+                </div>
+                
+                <button id="applyBtn" class="btn" disabled>Apply Enhancements</button>
+            </div>
+        </section>
+        
+        <!-- Sidebar Ad (displayed only on larger screens) -->
+        <div class="ad-container" style="display: none;" id="sidebarAd">
+            <span class="ad-label">Advertisement</span>
+            <!-- Replace with your Google AdSense code -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <section id="features" class="features">
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3 class="feature-title">One-Click Enhance</h3>
+                <p class="feature-desc">Our AI analyzes your photo and applies the perfect enhancements automatically.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Fast Processing</h3>
+                <p class="feature-desc">Enhance your photos in seconds with our optimized processing engine.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Privacy Focused</h3>
+                <p class="feature-desc">Your images are processed in your browser and never uploaded to our servers.</p>
+            </div>
+        </section>
+        
+        <section id="how-it-works" style="margin: 4rem 0;">
+            <h2 class="section-title">How It Works</h2>
+            <p style="margin-bottom: 1.5rem;">Enhancing your photos with our tool is simple and straightforward:</p>
+            <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;"><strong>Upload your image</strong> by clicking the upload area or dragging and dropping your file</li>
+                <li style="margin-bottom: 0.5rem;"><strong>Adjust the enhancement settings</strong> using the sliders to get your desired look</li>
+                <li style="margin-bottom: 0.5rem;"><strong>Click "Apply Enhancements"</strong> to see the changes</li>
+                <li><strong>Download your enhanced photo</strong> when you're satisfied with the result</li>
+            </ol>
+            <p>Our tool works directly in your browser, so your photos never leave your device unless you choose to download them.</p>
+        </section>
+        
+        <!-- Bottom Ad Banner -->
+        <div class="ad-container">
+            <span class="ad-label">Advertisement</span>
+            <!-- Replace with your Google AdSense code -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <section id="faq" style="margin: 4rem 0;">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div style="margin-top: 1.5rem;">
+                <h3 style="margin-bottom: 0.5rem;">Is this tool free to use?</h3>
+                <p style="margin-bottom: 1.5rem;">Yes, our photo enhancement tool is completely free to use with no hidden charges.</p>
+                
+                <h3 style="margin-bottom: 0.5rem;">What image formats are supported?</h3>
+                <p style="margin-bottom: 1.5rem;">We support all common image formats including JPG, PNG, GIF, and WEBP.</p>
+                
+                <h3 style="margin-bottom: 0.5rem;">Is there a file size limit?</h3>
+                <p style="margin-bottom: 1.5rem;">The tool can handle images up to 20MB in size. For best performance, we recommend using images under 10MB.</p>
+                
+                <h3 style="margin-bottom: 0.5rem;">Are my photos stored on your servers?</h3>
+                <p style="margin-bottom: 1.5rem;">No, all processing happens in your browser. Your photos never leave your device unless you choose to download them.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PhotoEnhance</h3>
+                    <p style="color: #bbb; margin-bottom: 1rem;">The easiest way to enhance your photos online for free.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="/Contact.html">Contact us</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="/privacy-policy.txt">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:contact@photoenhance.example.com">Email Us</a></li>
+                        <li><a href="#">Feedback</a></li>
+                        <li><a href="#">Report a Bug</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; <span id="year"></span> PhotoEnhance. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <div class="toast" id="toast"></div>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Show sidebar ad on larger screens
+        function checkScreenSize() {
+            const sidebarAd = document.getElementById('sidebarAd');
+            if (window.innerWidth >= 1200) {
+                sidebarAd.style.display = 'block';
+            } else {
+                sidebarAd.style.display = 'none';
+            }
+        }
+        
+        window.addEventListener('resize', checkScreenSize);
+        checkScreenSize();
+        
+        // Photo enhancement tool functionality
+        const fileInput = document.getElementById('fileInput');
+        const uploadArea = document.getElementById('uploadArea');
+        const imagePreview = document.getElementById('imagePreview');
+        const spinner = document.getElementById('spinner');
+        const applyBtn = document.getElementById('applyBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const toast = document.getElementById('toast');
+        
+        // Slider elements
+        const brightnessSlider = document.getElementById('brightnessSlider');
+        const contrastSlider = document.getElementById('contrastSlider');
+        const saturationSlider = document.getElementById('saturationSlider');
+        const sharpnessSlider = document.getElementById('sharpnessSlider');
+        const temperatureSlider = document.getElementById('temperatureSlider');
+        const vignetteSlider = document.getElementById('vignetteSlider');
+        const filterSelect = document.getElementById('filterSelect');
+        
+        // Slider value displays
+        const brightnessValue = document.getElementById('brightnessValue');
+        const contrastValue = document.getElementById('contrastValue');
+        const saturationValue = document.getElementById('saturationValue');
+        const sharpnessValue = document.getElementById('sharpnessValue');
+        const temperatureValue = document.getElementById('temperatureValue');
+        const vignetteValue = document.getElementById('vignetteValue');
+        
+        // Original image data
+        let originalImage = null;
+        let currentImage = null;
+        
+        // Update slider value displays
+        brightnessSlider.addEventListener('input', () => {
+            brightnessValue.textContent = brightnessSlider.value;
+        });
+        
+        contrastSlider.addEventListener('input', () => {
+            contrastValue.textContent = contrastSlider.value;
+        });
+        
+        saturationSlider.addEventListener('input', () => {
+            saturationValue.textContent = saturationSlider.value;
+        });
+        
+        sharpnessSlider.addEventListener('input', () => {
+            sharpnessValue.textContent = sharpnessSlider.value;
+        });
+        
+        temperatureSlider.addEventListener('input', () => {
+            temperatureValue.textContent = temperatureSlider.value;
+        });
+        
+        vignetteSlider.addEventListener('input', () => {
+            vignetteValue.textContent = vignetteSlider.value;
+        });
+        
+        // Handle file upload
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--primary-color)';
+            uploadArea.style.backgroundColor = 'rgba(66, 133, 244, 0.05)';
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = 'var(--medium-gray)';
+            uploadArea.style.backgroundColor = '';
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--medium-gray)';
+            uploadArea.style.backgroundColor = '';
+            
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                handleFileUpload();
+            }
+        });
+        
+        fileInput.addEventListener('change', handleFileUpload);
+        
+        function handleFileUpload() {
+            const file = fileInput.files[0];
+            if (!file) return;
+            
+            if (!file.type.match('image.*')) {
+                showToast('Please select an image file');
+                return;
+            }
+            
+            spinner.style.display = 'block';
+            uploadArea.style.display = 'none';
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                originalImage = new Image();
+                originalImage.onload = () => {
+                    currentImage = originalImage;
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    spinner.style.display = 'none';
+                    
+                    // Enable controls
+                    applyBtn.disabled = false;
+                    resetBtn.disabled = false;
+                    downloadBtn.disabled = false;
+                };
+                originalImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        // Apply enhancements
+        applyBtn.addEventListener('click', applyEnhancements);
+        
+        function applyEnhancements() {
+            if (!originalImage) return;
+            
+            spinner.style.display = 'block';
+            
+            // Use setTimeout to allow UI to update before heavy processing
+            setTimeout(() => {
+                // Create canvas to apply filters
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                // Set canvas dimensions
+                canvas.width = originalImage.width;
+                canvas.height = originalImage.height;
+                
+                // Draw original image
+                ctx.drawImage(originalImage, 0, 0);
+                
+                // Get image data
+                let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                let data = imageData.data;
+                
+                // Apply brightness and contrast
+                const brightness = parseInt(brightnessSlider.value) / 100;
+                const contrast = parseInt(contrastSlider.value) / 100;
+                const factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+                
+                for (let i = 0; i < data.length; i += 4) {
+                    // Apply brightness
+                    data[i] = data[i] + (brightness * 255);
+                    data[i+1] = data[i+1] + (brightness * 255);
+                    data[i+2] = data[i+2] + (brightness * 255);
+                    
+                    // Apply contrast
+                    data[i] = factor * (data[i] - 128) + 128;
+                    data[i+1] = factor * (data[i+1] - 128) + 128;
+                    data[i+2] = factor * (data[i+2] - 128) + 128;
+                    
+                    // Clamp values between 0-255
+                    data[i] = Math.max(0, Math.min(255, data[i]));
+                    data[i+1] = Math.max(0, Math.min(255, data[i+1]));
+                    data[i+2] = Math.max(0, Math.min(255, data[i+2]));
+                }
+                
+                // Put modified data back
+                ctx.putImageData(imageData, 0, 0);
+                
+                // Apply CSS filters for other effects
+                let filter = '';
+                
+                // Saturation
+                const saturation = 1 + (parseInt(saturationSlider.value) / 100);
+                filter += `saturate(${saturation}) `;
+                
+                // Temperature (approximated with sepia and hue-rotate)
+                const temperature = parseInt(temperatureSlider.value);
+                if (temperature > 0) {
+                    // Warm (more yellow/red)
+                    filter += `sepia(${temperature/100}) hue-rotate(${-temperature/5}deg) `;
+                } else if (temperature < 0) {
+                    // Cool (more blue)
+                    filter += `sepia(${Math.abs(temperature)/100}) hue-rotate(${Math.abs(temperature)/2}deg) `;
+                }
+                
+                // Additional filters from select
+                switch(filterSelect.value) {
+                    case 'grayscale':
+                        filter += 'grayscale(1) ';
+                        break;
+                    case 'sepia':
+                        filter += 'sepia(1) ';
+                        break;
+                    case 'invert':
+                        filter += 'invert(1) ';
+                        break;
+                    case 'hue-rotate':
+                        filter += 'hue-rotate(90deg) ';
+                        break;
+                }
+                
+                // Apply sharpness (unsharp mask would be better but more complex)
+                if (parseInt(sharpnessSlider.value) > 0) {
+                    // This is a simplified approximation
+                    ctx.filter = 'contrast(1.2)';
+                    ctx.drawImage(canvas, 0, 0);
+                    ctx.filter = 'none';
+                }
+                
+                // Apply vignette
+                const vignette = parseInt(vignetteSlider.value) / 100;
+                if (vignette > 0) {
+                    const gradient = ctx.createRadialGradient(
+                        canvas.width/2, canvas.height/2, 
+                        Math.min(canvas.width, canvas.height) * 0.4,
+                        canvas.width/2, canvas.height/2, 
+                        Math.min(canvas.width, canvas.height) * 0.8
+                    );
+                    gradient.addColorStop(0, 'rgba(0,0,0,0)');
+                    gradient.addColorStop(1, `rgba(0,0,0,${vignette})`);
+                    
+                    ctx.fillStyle = gradient;
+                    ctx.globalCompositeOperation = 'multiply';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.globalCompositeOperation = 'source-over';
+                }
+                
+                // Apply CSS filters
+                ctx.filter = filter.trim();
+                if (ctx.filter) {
+                    ctx.drawImage(canvas, 0, 0);
+                    ctx.filter = 'none';
+                }
+                
+                // Update preview
+                currentImage = new Image();
+                currentImage.onload = () => {
+                    imagePreview.src = canvas.toDataURL('image/jpeg', 0.9);
+                    spinner.style.display = 'none';
+                };
+                currentImage.src = canvas.toDataURL('image/jpeg', 0.9);
+                
+            }, 100);
+        }
+        
+        // Reset image
+        resetBtn.addEventListener('click', () => {
+            if (!originalImage) return;
+            
+            // Reset sliders
+            brightnessSlider.value = 0;
+            contrastSlider.value = 0;
+            saturationSlider.value = 0;
+            sharpnessSlider.value = 0;
+            temperatureSlider.value = 0;
+            vignetteSlider.value = 0;
+            filterSelect.value = 'none';
+            
+            // Update displays
+            brightnessValue.textContent = '0';
+            contrastValue.textContent = '0';
+            saturationValue.textContent = '0';
+            sharpnessValue.textContent = '0';
+            temperatureValue.textContent = '0';
+            vignetteValue.textContent = '0';
+            
+            // Reset image
+            imagePreview.src = originalImage.src;
+            currentImage = originalImage;
+            
+            showToast('Image reset to original');
+        });
+        
+        // Download image
+        downloadBtn.addEventListener('click', () => {
+            if (!currentImage) return;
+            
+            const link = document.createElement('a');
+            link.download = 'enhanced-photo.jpg';
+            link.href = imagePreview.src;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showToast('Download started');
+        });
+        
+        // Show toast notification
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Initialize AdSense ads
+        function initAds() {
+            // This would be handled by the AdSense script
+            // Just ensuring ads are loaded when the page is ready
+            if (typeof adsbygoogle !== 'undefined') {
+                adsbygoogle.push({});
+            }
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initAds);
+    </script>
+</body>
+</html>

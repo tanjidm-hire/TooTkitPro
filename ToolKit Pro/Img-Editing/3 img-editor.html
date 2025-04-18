@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online image editor with crop, resize, rotate and filter tools. Edit your photos quickly without installing software.">
+    <meta name="keywords" content="image editor, photo editor, online editor, crop image, resize photo, rotate picture, image filters">
+    <title>PixEdit - Free Online Image Editing Tool</title>
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #f5f7ff;
+            --dark-color: #333;
+            --light-color: #fff;
+            --border-color: #ddd;
+            --error-color: #ff4a4a;
+            --success-color: #4caf50;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--light-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--dark-color);
+        }
+        
+        .ad-banner {
+            background-color: var(--secondary-color);
+            border: 1px dashed var(--border-color);
+            padding: 1rem;
+            text-align: center;
+            margin: 1rem 0;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        main {
+            padding: 2rem 0;
+        }
+        
+        .editor-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .editor-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .image-preview-container {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .image-preview {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            display: none;
+            margin: 0 auto;
+        }
+        
+        .placeholder {
+            text-align: center;
+            padding: 3rem 0;
+            color: #777;
+        }
+        
+        .tools-panel {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+        
+        .tool-section {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tool-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        h3 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #3a5bef;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0e5ff;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+        
+        .file-upload-label {
+            display: block;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+        
+        .file-upload-label:hover {
+            background-color: #3a5bef;
+        }
+        
+        .range-container {
+            margin-bottom: 1rem;
+        }
+        
+        .range-container label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .range-container input[type="range"] {
+            width: 100%;
+        }
+        
+        .range-value {
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .filter-option {
+            aspect-ratio: 1;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .filter-option:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .filter-option.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(74, 107, 255, 0.3);
+        }
+        
+        .status-message {
+            padding: 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .status-message.success {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: var(--success-color);
+            display: block;
+        }
+        
+        .status-message.error {
+            background-color: rgba(255, 74, 74, 0.2);
+            color: var(--error-color);
+            display: block;
+        }
+        
+        .download-btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: var(--light-color);
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .filter-grid {
+                grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+        }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Pix<span>Edit</span></a>
+            <nav>
+                <a href="#" class="btn btn-secondary">Help</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Top Ad Banner -->
+        <div class="ad-banner">
+            <!-- Google AdSense Ad Unit -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+            <!-- Replace with your Ad Unit -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <main>
+            <div class="status-message" id="statusMessage"></div>
+            
+            <div class="editor-container">
+                <div class="image-editor">
+                    <div class="image-preview-container">
+                        <div class="placeholder" id="imagePlaceholder">
+                            <p>Upload an image to start editing</p>
+                        </div>
+                        <img id="imagePreview" class="image-preview" alt="Image Preview">
+                        <canvas id="imageCanvas" style="display:none;"></canvas>
+                    </div>
+                    
+                    <!-- Side Ad Banner -->
+                    <div class="ad-banner">
+                        <!-- Google AdSense Ad Unit -->
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+                        <!-- Replace with your Ad Unit -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                             data-ad-slot="YOUR_AD_SLOT_ID"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+                
+                <div class="tools-panel">
+                    <div class="tool-section">
+                        <h2>Image Tools</h2>
+                        
+                        <label for="imageUpload" class="file-upload-label">Choose Image</label>
+                        <input type="file" id="imageUpload" accept="image/*">
+                        
+                        <div class="btn-group">
+                            <button id="cropBtn" class="btn btn-secondary" disabled>Crop</button>
+                            <button id="resetBtn" class="btn btn-secondary" disabled>Reset</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-section">
+                        <h3>Resize</h3>
+                        <div class="range-container">
+                            <label for="widthRange">Width: <span id="widthValue" class="range-value">0</span>px</label>
+                            <input type="range" id="widthRange" min="50" max="2000" value="0" disabled>
+                        </div>
+                        <div class="range-container">
+                            <label for="heightRange">Height: <span id="heightValue" class="range-value">0</span>px</label>
+                            <input type="range" id="heightRange" min="50" max="2000" value="0" disabled>
+                        </div>
+                        <div class="btn-group">
+                            <button id="resizeBtn" class="btn btn-secondary" disabled>Apply Resize</button>
+                            <button id="lockAspectBtn" class="btn btn-secondary">🔒</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-section">
+                        <h3>Rotate</h3>
+                        <div class="range-container">
+                            <label for="rotateRange">Degrees: <span id="rotateValue" class="range-value">0</span>°</label>
+                            <input type="range" id="rotateRange" min="-180" max="180" value="0" disabled>
+                        </div>
+                        <div class="btn-group">
+                            <button id="rotateLeftBtn" class="btn btn-secondary" disabled>↩ 90°</button>
+                            <button id="rotateRightBtn" class="btn btn-secondary" disabled>↪ 90°</button>
+                            <button id="flipHorizontalBtn" class="btn btn-secondary" disabled>↔ Flip</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-section">
+                        <h3>Filters</h3>
+                        <div class="filter-grid" id="filterGrid">
+                            <div class="filter-option" data-filter="none" style="background: #f5f5f5;" title="Original"></div>
+                            <div class="filter-option" data-filter="grayscale" style="background: linear-gradient(135deg, #ccc, #999);" title="Grayscale"></div>
+                            <div class="filter-option" data-filter="sepia" style="background: #704214;" title="Sepia"></div>
+                            <div class="filter-option" data-filter="invert" style="background: linear-gradient(135deg, #000, #fff);" title="Invert"></div>
+                            <div class="filter-option" data-filter="blur" style="background: #f0f0f0; filter: blur(1px);" title="Blur"></div>
+                            <div class="filter-option" data-filter="brightness" style="background: #fff;" title="Brightness"></div>
+                            <div class="filter-option" data-filter="contrast" style="background: linear-gradient(135deg, #000, #fff);" title="Contrast"></div>
+                            <div class="filter-option" data-filter="saturate" style="background: #f00;" title="Saturate"></div>
+                            <div class="filter-option" data-filter="hue-rotate" style="background: linear-gradient(135deg, red, yellow, lime, cyan, blue, magenta, red);" title="Hue Rotate"></div>
+                        </div>
+                        <div class="range-container">
+                            <label for="filterIntensity">Intensity: <span id="filterIntensityValue" class="range-value">100</span>%</label>
+                            <input type="range" id="filterIntensity" min="0" max="200" value="100" disabled>
+                        </div>
+                    </div>
+                    
+                    <button id="downloadBtn" class="btn download-btn" disabled>Download Image</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+            <p class="copyright">© 2023 PixEdit Online Image Editor. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const imageUpload = document.getElementById('imageUpload');
+            const imagePreview = document.getElementById('imagePreview');
+            const imagePlaceholder = document.getElementById('imagePlaceholder');
+            const imageCanvas = document.getElementById('imageCanvas');
+            const ctx = imageCanvas.getContext('2d');
+            const statusMessage = document.getElementById('statusMessage');
+            
+            // Tool buttons
+            const cropBtn = document.getElementById('cropBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const resizeBtn = document.getElementById('resizeBtn');
+            const lockAspectBtn = document.getElementById('lockAspectBtn');
+            const rotateLeftBtn = document.getElementById('rotateLeftBtn');
+            const rotateRightBtn = document.getElementById('rotateRightBtn');
+            const flipHorizontalBtn = document.getElementById('flipHorizontalBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            // Range inputs
+            const widthRange = document.getElementById('widthRange');
+            const heightRange = document.getElementById('heightRange');
+            const widthValue = document.getElementById('widthValue');
+            const heightValue = document.getElementById('heightValue');
+            const rotateRange = document.getElementById('rotateRange');
+            const rotateValue = document.getElementById('rotateValue');
+            const filterIntensity = document.getElementById('filterIntensity');
+            const filterIntensityValue = document.getElementById('filterIntensityValue');
+            
+            // Filter options
+            const filterGrid = document.getElementById('filterGrid');
+            const filterOptions = document.querySelectorAll('.filter-option');
+            
+            // State variables
+            let originalImage = null;
+            let currentImage = null;
+            let aspectRatio = 1;
+            let isAspectLocked = true;
+            let currentFilter = 'none';
+            let isCropping = false;
+            let cropStartX, cropStartY, cropEndX, cropEndY;
+            
+            // Initialize event listeners
+            initEventListeners();
+            
+            function initEventListeners() {
+                // Image upload
+                imageUpload.addEventListener('change', handleImageUpload);
+                
+                // Crop functionality
+                cropBtn.addEventListener('click', toggleCropMode);
+                imagePreview.addEventListener('mousedown', startCrop);
+                imagePreview.addEventListener('mousemove', updateCrop);
+                imagePreview.addEventListener('mouseup', endCrop);
+                
+                // Resize functionality
+                widthRange.addEventListener('input', updateWidth);
+                heightRange.addEventListener('input', updateHeight);
+                resizeBtn.addEventListener('click', applyResize);
+                lockAspectBtn.addEventListener('click', toggleAspectLock);
+                
+                // Rotate functionality
+                rotateRange.addEventListener('input', updateRotate);
+                rotateLeftBtn.addEventListener('click', () => rotateImage(-90));
+                rotateRightBtn.addEventListener('click', () => rotateImage(90));
+                flipHorizontalBtn.addEventListener('click', flipHorizontal);
+                
+                // Filter functionality
+                filterOptions.forEach(option => {
+                    option.addEventListener('click', () => applyFilter(option.dataset.filter));
+                });
+                filterIntensity.addEventListener('input', updateFilterIntensity);
+                
+                // Reset and download
+                resetBtn.addEventListener('click', resetImage);
+                downloadBtn.addEventListener('click', downloadImage);
+            }
+            
+            function handleImageUpload(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                if (!file.type.match('image.*')) {
+                    showStatus('Please select an image file (JPEG, PNG, GIF, etc.)', 'error');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    originalImage = new Image();
+                    originalImage.onload = function() {
+                        // Set up canvas and preview
+                        imageCanvas.width = originalImage.width;
+                        imageCanvas.height = originalImage.height;
+                        ctx.drawImage(originalImage, 0, 0);
+                        
+                        // Update preview
+                        currentImage = originalImage;
+                        updatePreview();
+                        
+                        // Initialize range values
+                        widthRange.value = originalImage.width;
+                        heightRange.value = originalImage.height;
+                        widthValue.textContent = originalImage.width;
+                        heightValue.textContent = originalImage.height;
+                        aspectRatio = originalImage.width / originalImage.height;
+                        
+                        // Enable tools
+                        enableTools(true);
+                        
+                        showStatus('Image loaded successfully!', 'success');
+                    };
+                    originalImage.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+            
+            function updatePreview() {
+                imagePlaceholder.style.display = 'none';
+                imagePreview.style.display = 'block';
+                imagePreview.src = imageCanvas.toDataURL('image/png');
+            }
+            
+            function enableTools(enable) {
+                const tools = [
+                    cropBtn, resetBtn, resizeBtn, 
+                    rotateLeftBtn, rotateRightBtn, flipHorizontalBtn,
+                    downloadBtn, widthRange, heightRange, rotateRange,
+                    filterIntensity
+                ];
+                
+                tools.forEach(tool => {
+                    tool.disabled = !enable;
+                });
+            }
+            
+            function showStatus(message, type) {
+                statusMessage.textContent = message;
+                statusMessage.className = 'status-message ' + type;
+                
+                // Hide status after 3 seconds
+                setTimeout(() => {
+                    statusMessage.style.opacity = '0';
+                    setTimeout(() => {
+                        statusMessage.style.opacity = '1';
+                        statusMessage.className = 'status-message';
+                    }, 500);
+                }, 3000);
+            }
+            
+            // Crop functionality
+            function toggleCropMode() {
+                isCropping = !isCropping;
+                cropBtn.textContent = isCropping ? 'Apply Crop' : 'Crop';
+                cropBtn.style.backgroundColor = isCropping ? '#4CAF50' : '';
+                
+                if (!isCropping && (cropStartX !== undefined || cropEndX !== undefined)) {
+                    applyCrop();
+                }
+            }
+            
+            function startCrop(e) {
+                if (!isCropping) return;
+                
+                const rect = imagePreview.getBoundingClientRect();
+                cropStartX = (e.clientX - rect.left) * (imageCanvas.width / rect.width);
+                cropStartY = (e.clientY - rect.top) * (imageCanvas.height / rect.height);
+                cropEndX = cropStartX;
+                cropEndY = cropStartY;
+                
+                // Show crop rectangle
+                drawCropRectangle();
+            }
+            
+            function updateCrop(e) {
+                if (!isCropping || cropStartX === undefined) return;
+                
+                const rect = imagePreview.getBoundingClientRect();
+                cropEndX = (e.clientX - rect.left) * (imageCanvas.width / rect.width);
+                cropEndY = (e.clientY - rect.top) * (imageCanvas.height / rect.height);
+                
+                // Update crop rectangle
+                drawCropRectangle();
+            }
+            
+            function endCrop() {
+                if (!isCropping) return;
+                // Crop is applied when the crop button is clicked again (toggleCropMode)
+            }
+            
+            function drawCropRectangle() {
+                // Create a temporary canvas to show the crop rectangle
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = imageCanvas.width;
+                tempCanvas.height = imageCanvas.height;
+                const tempCtx = tempCanvas.getContext('2d');
+                
+                // Draw the current image
+                tempCtx.drawImage(imageCanvas, 0, 0);
+                
+                // Draw the crop rectangle
+                tempCtx.strokeStyle = '#4a6bff';
+                tempCtx.lineWidth = 2;
+                tempCtx.setLineDash([5, 5]);
+                tempCtx.strokeRect(
+                    Math.min(cropStartX, cropEndX),
+                    Math.min(cropStartY, cropEndY),
+                    Math.abs(cropEndX - cropStartX),
+                    Math.abs(cropEndY - cropStartY)
+                );
+                
+                // Update preview
+                imagePreview.src = tempCanvas.toDataURL('image/png');
+            }
+            
+            function applyCrop() {
+                const x = Math.min(cropStartX, cropEndX);
+                const y = Math.min(cropStartY, cropEndY);
+                const width = Math.abs(cropEndX - cropStartX);
+                const height = Math.abs(cropEndY - cropStartY);
+                
+                // Create a new canvas with the cropped dimensions
+                const croppedCanvas = document.createElement('canvas');
+                croppedCanvas.width = width;
+                croppedCanvas.height = height;
+                const croppedCtx = croppedCanvas.getContext('2d');
+                
+                // Draw the cropped portion
+                croppedCtx.drawImage(
+                    imageCanvas,
+                    x, y, width, height,
+                    0, 0, width, height
+                );
+                
+                // Update the main canvas
+                imageCanvas.width = width;
+                imageCanvas.height = height;
+                ctx.drawImage(croppedCanvas, 0, 0);
+                
+                // Update range values
+                widthRange.value = width;
+                heightRange.value = height;
+                widthValue.textContent = width;
+                heightValue.textContent = height;
+                aspectRatio = width / height;
+                
+                // Reset crop state
+                cropStartX = cropStartY = cropEndX = cropEndY = undefined;
+                updatePreview();
+                
+                showStatus('Image cropped successfully!', 'success');
+            }
+            
+            // Resize functionality
+            function updateWidth() {
+                const newWidth = parseInt(widthRange.value);
+                widthValue.textContent = newWidth;
+                
+                if (isAspectLocked) {
+                    const newHeight = Math.round(newWidth / aspectRatio);
+                    heightRange.value = newHeight;
+                    heightValue.textContent = newHeight;
+                }
+            }
+            
+            function updateHeight() {
+                const newHeight = parseInt(heightRange.value);
+                heightValue.textContent = newHeight;
+                
+                if (isAspectLocked) {
+                    const newWidth = Math.round(newHeight * aspectRatio);
+                    widthRange.value = newWidth;
+                    widthValue.textContent = newWidth;
+                }
+            }
+            
+            function toggleAspectLock() {
+                isAspectLocked = !isAspectLocked;
+                lockAspectBtn.textContent = isAspectLocked ? '🔒' : '🔓';
+            }
+            
+            function applyResize() {
+                const newWidth = parseInt(widthRange.value);
+                const newHeight = parseInt(heightRange.value);
+                
+                // Create a new canvas with the new dimensions
+                const resizedCanvas = document.createElement('canvas');
+                resizedCanvas.width = newWidth;
+                resizedCanvas.height = newHeight;
+                const resizedCtx = resizedCanvas.getContext('2d');
+                
+                // Draw the resized image
+                resizedCtx.drawImage(imageCanvas, 0, 0, newWidth, newHeight);
+                
+                // Update the main canvas
+                imageCanvas.width = newWidth;
+                imageCanvas.height = newHeight;
+                ctx.drawImage(resizedCanvas, 0, 0);
+                
+                // Update aspect ratio
+                aspectRatio = newWidth / newHeight;
+                
+                updatePreview();
+                showStatus('Image resized successfully!', 'success');
+            }
+            
+            // Rotate functionality
+            function updateRotate() {
+                const degrees = parseInt(rotateRange.value);
+                rotateValue.textContent = degrees;
+                rotateImage(degrees);
+            }
+            
+            function rotateImage(degrees) {
+                // Convert degrees to radians
+                const radians = degrees * Math.PI / 180;
+                
+                // Calculate new canvas size to fit rotated image
+                const sin = Math.abs(Math.sin(radians));
+                const cos = Math.abs(Math.cos(radians));
+                const newWidth = Math.floor(imageCanvas.width * cos + imageCanvas.height * sin);
+                const newHeight = Math.floor(imageCanvas.width * sin + imageCanvas.height * cos);
+                
+                // Create a temporary canvas
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = newWidth;
+                tempCanvas.height = newHeight;
+                const tempCtx = tempCanvas.getContext('2d');
+                
+                // Translate to center and rotate
+                tempCtx.translate(newWidth / 2, newHeight / 2);
+                tempCtx.rotate(radians);
+                tempCtx.drawImage(imageCanvas, -imageCanvas.width / 2, -imageCanvas.height / 2);
+                
+                // Update the main canvas
+                imageCanvas.width = newWidth;
+                imageCanvas.height = newHeight;
+                ctx.drawImage(tempCanvas, 0, 0);
+                
+                // Update range values if this was a 90° rotation
+                if (Math.abs(degrees) === 90) {
+                    const temp = widthRange.value;
+                    widthRange.value = heightRange.value;
+                    heightRange.value = temp;
+                    
+                    widthValue.textContent = widthRange.value;
+                    heightValue.textContent = heightRange.value;
+                    
+                    aspectRatio = parseInt(widthRange.value) / parseInt(heightRange.value);
+                }
+                
+                updatePreview();
+                showStatus('Image rotated successfully!', 'success');
+            }
+            
+            function flipHorizontal() {
+                // Create a temporary canvas
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = imageCanvas.width;
+                tempCanvas.height = imageCanvas.height;
+                const tempCtx = tempCanvas.getContext('2d');
+                
+                // Flip horizontally
+                tempCtx.translate(imageCanvas.width, 0);
+                tempCtx.scale(-1, 1);
+                tempCtx.drawImage(imageCanvas, 0, 0);
+                
+                // Update the main canvas
+                ctx.drawImage(tempCanvas, 0, 0);
+                
+                updatePreview();
+                showStatus('Image flipped successfully!', 'success');
+            }
+            
+            // Filter functionality
+            function applyFilter(filter) {
+                currentFilter = filter;
+                
+                // Highlight selected filter
+                filterOptions.forEach(option => {
+                    option.classList.toggle('active', option.dataset.filter === filter);
+                });
+                
+                applyCurrentFilter();
+            }
+            
+            function updateFilterIntensity() {
+                const intensity = parseInt(filterIntensity.value);
+                filterIntensityValue.textContent = intensity;
+                applyCurrentFilter();
+            }
+            
+            function applyCurrentFilter() {
+                const intensity = parseInt(filterIntensity.value) / 100;
+                
+                // Create a temporary canvas
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = imageCanvas.width;
+                tempCanvas.height = imageCanvas.height;
+                const tempCtx = tempCanvas.getContext('2d');
+                
+                // Apply filter
+                tempCtx.filter = getFilterString(currentFilter, intensity);
+                tempCtx.drawImage(imageCanvas, 0, 0);
+                tempCtx.filter = 'none';
+                
+                // Update preview
+                const previewCanvas = document.createElement('canvas');
+                previewCanvas.width = imagePreview.width;
+                previewCanvas.height = imagePreview.height;
+                const previewCtx = previewCanvas.getContext('2d');
+                
+                // Scale down for preview
+                previewCtx.drawImage(tempCanvas, 0, 0, imagePreview.width, imagePreview.height);
+                imagePreview.src = previewCanvas.toDataURL('image/png');
+            }
+            
+            function getFilterString(filter, intensity) {
+                switch(filter) {
+                    case 'grayscale':
+                        return `grayscale(${intensity})`;
+                    case 'sepia':
+                        return `sepia(${intensity})`;
+                    case 'invert':
+                        return `invert(${intensity})`;
+                    case 'blur':
+                        return `blur(${intensity * 5}px)`;
+                    case 'brightness':
+                        return `brightness(${intensity * 2})`;
+                    case 'contrast':
+                        return `contrast(${intensity * 2})`;
+                    case 'saturate':
+                        return `saturate(${intensity * 2})`;
+                    case 'hue-rotate':
+                        return `hue-rotate(${intensity * 360}deg)`;
+                    default:
+                        return 'none';
+                }
+            }
+            
+            // Reset and download
+            function resetImage() {
+                if (!originalImage) return;
+                
+                // Reset canvas to original image
+                imageCanvas.width = originalImage.width;
+                imageCanvas.height = originalImage.height;
+                ctx.drawImage(originalImage, 0, 0);
+                
+                // Reset range values
+                widthRange.value = originalImage.width;
+                heightRange.value = originalImage.height;
+                widthValue.textContent = originalImage.width;
+                heightValue.textContent = originalImage.height;
+                aspectRatio = originalImage.width / originalImage.height;
+                
+                // Reset rotation
+                rotateRange.value = 0;
+                rotateValue.textContent = 0;
+                
+                // Reset filters
+                currentFilter = 'none';
+                filterIntensity.value = 100;
+                filterIntensityValue.textContent = 100;
+                filterOptions.forEach(option => {
+                    option.classList.remove('active');
+                });
+                document.querySelector('.filter-option[data-filter="none"]').classList.add('active');
+                
+                updatePreview();
+                showStatus('Image reset to original!', 'success');
+            }
+            
+            function downloadImage() {
+                if (!imageCanvas) return;
+                
+                const link = document.createElement('a');
+                link.download = 'edited-image.png';
+                link.href = imageCanvas.toDataURL('image/png');
+                link.click();
+                
+                showStatus('Image downloaded successfully!', 'success');
+            }
+        });
+    </script>
+</body>
+</html>

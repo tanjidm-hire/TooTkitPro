@@ -1,0 +1,330 @@
+/* Basic Reset & Defaults */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.8em;
+    color: #2c3e50;
+}
+h1 { font-size: 1.8em; }
+h2 { font-size: 1.4em; }
+h3 { font-size: 1.1em; color: #34495e; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 1em;}
+h3:first-child { margin-top: 0; } /* Remove top margin for first h3 in a section */
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+button, input, select, label {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    vertical-align: middle; /* Align form elements better */
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+input[type="file"] {
+    display: none; /* Hide default input, use label */
+}
+
+input[type="number"],
+input[type="text"] {
+    width: 100%; /* Make text/number inputs take full width */
+}
+
+input[type="checkbox"] {
+     width: auto; /* Checkboxes don't need full width */
+     margin-right: 5px;
+}
+
+label.upload-button {
+    display: inline-block;
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+label.upload-button:hover {
+    background-color: #27ae60;
+}
+
+/* Layout */
+.main-header, .main-footer, .seo-content {
+    padding: 15px 5%;
+    background-color: #fff;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+.main-header h1 a {
+    color: #2c3e50;
+    text-decoration: none;
+}
+.main-header .tagline {
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+
+.main-footer {
+    border-top: 1px solid #eee;
+    border-bottom: none;
+    margin-top: auto; /* Pushes footer down */
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+.main-footer #year {
+    font-weight: bold;
+}
+.main-footer a {
+    color: #7f8c8d;
+    margin: 0 5px;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    padding: 20px 5%;
+    flex-grow: 1; /* Allows main content to fill space */
+    gap: 30px; /* Space between sections */
+}
+
+.resizer-section {
+    flex: 2; /* Takes more space initially */
+    min-width: 300px; /* Minimum width before wrapping */
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex; /* Use flexbox for internal layout */
+    flex-direction: column;
+}
+
+.controls-section {
+    flex: 1; /* Takes less space */
+    min-width: 280px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.seo-content {
+    background-color: #f9f9f9;
+    border: none;
+    text-align: left;
+    padding: 20px 5%;
+}
+.seo-content ol, .seo-content ul {
+    margin-left: 25px;
+    margin-bottom: 1em;
+}
+.seo-content li {
+    margin-bottom: 0.5em;
+}
+
+/* Resizer Specific */
+.upload-area {
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    background-color: #fdfdfd;
+}
+#fileName {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+    word-wrap: break-word; /* Prevent long filenames breaking layout */
+}
+.dim-info {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+.status-message {
+    margin-top: 10px;
+    font-weight: bold;
+    min-height: 1.2em; /* Prevent layout jump */
+}
+.status-message.error { color: #e74c3c; }
+.status-message.success { color: #27ae60; }
+
+
+.preview-container {
+    width: 100%;
+    background-color: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    padding: 15px;
+    text-align: center;
+    margin-top: auto; /* Push preview to bottom of its flex container */
+    min-height: 150px; /* Ensure some space */
+    display: flex; /* Center content */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.preview-container h3 {
+    margin-bottom: 10px;
+    border: none;
+    font-size: 1em;
+    color: #7f8c8d;
+}
+
+#imagePreview {
+    max-width: 100%;
+    max-height: 300px; /* Limit preview height */
+    height: auto;
+    display: block; /* Remove extra space */
+    margin: 0 auto;
+}
+#previewPlaceholder {
+    color: #95a5a6;
+}
+
+
+/* Controls Specific */
+.controls-group {
+    margin-bottom: 25px;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 15px;
+}
+.controls-group:last-child {
+    border-bottom: none;
+}
+
+.control-item {
+    margin-bottom: 15px;
+}
+.control-item:last-child {
+     margin-bottom: 0;
+}
+.control-item label {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+.control-item label input[type="checkbox"] { /* Style label containing checkbox */
+    display: inline-block;
+    font-weight: normal;
+    margin-left: 0;
+}
+
+
+.actions button {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+
+/* Ad Placeholders */
+.ad-placeholder {
+    background-color: #f0f0f0;
+    border: 1px dashed #ccc;
+    text-align: center;
+    margin: 20px auto; /* Center ads and add vertical space */
+    min-height: 50px; /* Minimum height */
+    display: flex; /* Use flex to center content */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* For absolute positioning label */
+    color: #999;
+}
+.ad-label {
+    font-size: 0.7em;
+    color: #aaa;
+    position: absolute;
+    top: 2px;
+    right: 5px;
+}
+
+.ad-placeholder-header { min-height: 90px; max-width: 728px; }
+.ad-placeholder-sidebar { min-height: 250px; margin-top: 30px; /* Add space above sidebar ad */ }
+.ad-placeholder-footer { min-height: 90px; max-width: 728px; }
+
+/* AdSense `ins` styling */
+.adsbygoogle {
+    display: block; /* Ensure it takes up space */
+    background: transparent; /* Allow placeholder bg */
+    /* AdSense will control the height/width */
+}
+
+
+/* Responsive Design */
+@media (max-width: 900px) { /* Adjust breakpoint if needed */
+     .resizer-section {
+        flex: 1.5; /* Give slightly less space */
+    }
+     .controls-section {
+        flex: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 1.5em; }
+    .main-content {
+        flex-direction: column; /* Stack sections */
+        padding: 15px 3%;
+    }
+    .resizer-section, .controls-section {
+        flex: 1; /* Make them full width when stacked */
+        width: 100%;
+    }
+    .controls-section {
+        margin-top: 20px;
+    }
+     .ad-placeholder-header, .ad-placeholder-footer {
+        max-width: 95%;
+    }
+    #imagePreview {
+        max-height: 250px; /* Slightly smaller preview */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.3em; }
+    button, input, select { font-size: 0.9rem; padding: 8px 10px;}
+    .actions button { padding: 10px 12px; }
+}

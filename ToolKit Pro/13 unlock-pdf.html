@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to unlock password-protected PDF files. Remove restrictions and access your documents in seconds.">
+    <meta name="keywords" content="unlock PDF, remove PDF password, PDF restrictions, PDF security, PDF access">
+    <meta name="author" content="PDF Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free PDF Unlock Tool | Remove Password Protection Online">
+    <meta property="og:description" content="Unlock your PDF files and remove restrictions. Free online tool with no installation required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/unlock-pdf">
+    
+    <title>Unlock PDF Online - Remove Password Protection | PDF Tools</title>
+    
+    <link rel="canonical" href="https://yourdomain.com/unlock-pdf">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray-color);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .ad-banner {
+            background-color: #f1f3f4;
+            padding: 15px;
+            margin: 20px auto;
+            text-align: center;
+            border-radius: var(--border-radius);
+            max-width: 970px;
+        }
+        
+        .ad-banner p {
+            color: var(--gray-color);
+            margin-bottom: 10px;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 800px;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--gray-color);
+            border-radius: var(--border-radius);
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 30px;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+        
+        .upload-area i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .upload-area h3 {
+            margin-bottom: 10px;
+        }
+        
+        .upload-area p {
+            color: var(--gray-color);
+        }
+        
+        #file-input {
+            display: none;
+        }
+        
+        .settings {
+            margin-bottom: 30px;
+        }
+        
+        .setting-group {
+            margin-bottom: 20px;
+        }
+        
+        .setting-group h4 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+        }
+        
+        .restrictions-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+        
+        .restrictions-info h4 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .restrictions-list {
+            list-style-type: none;
+        }
+        
+        .restrictions-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .restrictions-list li i {
+            margin-right: 10px;
+            color: var(--gray-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #3367d6;
+            transform: translateY(-2px);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .btn-secondary {
+            background-color: var(--gray-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #4d5156;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            display: none;
+        }
+        
+        .status.success {
+            background-color: rgba(52, 168, 83, 0.1);
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+            display: block;
+        }
+        
+        .status.error {
+            background-color: rgba(234, 67, 53, 0.1);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            display: block;
+        }
+        
+        .file-info {
+            display: none;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+        }
+        
+        .file-info.show {
+            display: block;
+        }
+        
+        .file-info p {
+            margin-bottom: 5px;
+        }
+        
+        .file-info p strong {
+            color: var(--dark-color);
+        }
+        
+        .download-btn {
+            display: none;
+            margin-top: 20px;
+        }
+        
+        .download-btn.show {
+            display: inline-block;
+        }
+        
+        .features {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .feature-card p {
+            color: var(--gray-color);
+        }
+        
+        .ad-sidebar {
+            display: none;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc1c6;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #3c4043;
+            color: #bdc1c6;
+            font-size: 14px;
+        }
+        
+        @media (min-width: 992px) {
+            .main-content {
+                display: grid;
+                grid-template-columns: 1fr 300px;
+                gap: 30px;
+                align-items: start;
+            }
+            
+            .ad-sidebar {
+                display: block;
+                position: sticky;
+                top: 100px;
+            }
+            
+            .sidebar-ad {
+                background-color: #f1f3f4;
+                padding: 15px;
+                margin-bottom: 20px;
+                border-radius: var(--border-radius);
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 15px 0;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: var(--box-shadow);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .tool-container {
+                padding: 20px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 20px auto;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .spinner.active {
+            display: block;
+        }
+        
+        /* Password toggle */
+        .password-toggle {
+            position: relative;
+        }
+        
+        .password-toggle input {
+            padding-right: 40px;
+        }
+        
+        .password-toggle .toggle-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--gray-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/13 unlock-pdf.html" class="logo">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>PDF Tools</span>
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/tools">All Tools</a></li>
+                        <li><a href="/Contact.html">About</a></li>
+                        <li><a href="/Contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Unlock Your PDF Files</h1>
+            <p>Remove password protection and restrictions from your PDF documents. Our free online tool helps you regain access to your files in seconds.</p>
+            
+            <!-- Top Ad Banner -->
+            <div class="ad-banner">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+                <!-- UnlockPDF_Top_Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </section>
+    
+    <main class="container main-content">
+        <div class="tool-content">
+            <div class="tool-container">
+                <h2>PDF Unlock Tool</h2>
+                <p>Upload your password-protected PDF file to remove restrictions</p>
+                
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop your PDF file here</h3>
+                    <p>or click to browse files</p>
+                    <input type="file" id="file-input" accept=".pdf">
+                </div>
+                
+                <div class="file-info" id="file-info">
+                    <p><strong>File name:</strong> <span id="file-name"></span></p>
+                    <p><strong>File size:</strong> <span id="file-size"></span></p>
+                    <button class="btn btn-secondary" id="change-file">Change File</button>
+                </div>
+                
+                <div class="restrictions-info" id="restrictions-info" style="display: none;">
+                    <h4>Current Restrictions</h4>
+                    <ul class="restrictions-list" id="restrictions-list">
+                        <!-- Will be populated by JavaScript -->
+                    </ul>
+                </div>
+                
+                <div class="settings">
+                    <div class="setting-group password-toggle">
+                        <h4>PDF Password (if known)</h4>
+                        <input type="password" id="pdf-password" class="form-control" placeholder="Enter PDF password (optional)">
+                        <i class="fas fa-eye toggle-icon" id="toggle-password"></i>
+                        <p class="hint">If you don't know the password, we'll try to remove it automatically (for owner passwords only).</p>
+                    </div>
+                </div>
+                
+                <button class="btn btn-block" id="unlock-btn">Unlock PDF</button>
+                
+                <div class="spinner" id="spinner"></div>
+                
+                <div class="status" id="status"></div>
+                
+                <a href="#" class="btn btn-block download-btn" id="download-btn" download>
+                    <i class="fas fa-download"></i> Download Unlocked PDF
+                </a>
+            </div>
+            
+            <!-- Middle Ad Banner -->
+            <div class="ad-banner">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+                <!-- UnlockPDF_Middle_Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        
+        <div class="ad-sidebar">
+            <!-- Sidebar Ad 1 -->
+            <div class="sidebar-ad">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+                <!-- UnlockPDF_Sidebar_1 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <!-- Sidebar Ad 2 -->
+            <div class="sidebar-ad">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+                <!-- UnlockPDF_Sidebar_2 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </main>
+    
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Unlock Your PDF Files?</h2>
+                <p>Our PDF unlock tool helps you regain access to your documents and remove unnecessary restrictions.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-unlock"></i>
+                    <h3>Password Removal</h3>
+                    <p>Remove user and owner passwords from your PDF files to regain full access to your documents.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-edit"></i>
+                    <h3>Restriction Removal</h3>
+                    <p>Eliminate printing, editing, copying, and other restrictions that may be limiting your use of the PDF.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Processing</h3>
+                    <p>Your files are processed securely and deleted from our servers immediately after processing.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud-Based</h3>
+                    <p>No software installation required. Unlock your PDFs directly in your browser from any device.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Processing</h3>
+                    <p>Our optimized algorithms unlock your files quickly without compromising document quality.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Quality Preservation</h3>
+                    <p>Your unlocked PDF maintains its original formatting, images, and text quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bottom Ad Banner -->
+    <div class="container">
+        <div class="ad-banner">
+            <p>Advertisement</p>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+            <!-- UnlockPDF_Bottom_Banner -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PDF Tools</h3>
+                    <ul>
+                        <li><a href="/Contact.html">About Us</a></li>
+                        <li><a href="/tools">All Tools</a></li>
+                        <li><a href="/privacy-policy.txt">Privacy Policy</a></li>
+                        <li><a href="/privacy-policy.txt">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>PDF Tools</h3>
+                    <ul>
+                        <li><a href="/12 pdf-protection.html">Protect PDF</a></li>
+                        <li><a href="/14 marge-PDF.html">Merge PDF</a></li>
+                        <li><a href="/11 compress-pdf.html">Compress PDF</a></li>
+                        <li><a href="/8 PDFToWord-Converter.html">PDF to Word</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="/Contact.html">Contact Us</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/Contact.html">Help Center</a></li>
+                        <li><a href="/Contact.html">Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> PDF Tools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // File upload functionality
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+        const fileInfo = document.getElementById('file-info');
+        const fileName = document.getElementById('file-name');
+        const fileSize = document.getElementById('file-size');
+        const changeFileBtn = document.getElementById('change-file');
+        const unlockBtn = document.getElementById('unlock-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const spinner = document.getElementById('spinner');
+        const statusDiv = document.getElementById('status');
+        const restrictionsInfo = document.getElementById('restrictions-info');
+        const restrictionsList = document.getElementById('restrictions-list');
+        const togglePassword = document.getElementById('toggle-password');
+        const pdfPassword = document.getElementById('pdf-password');
+        
+        // Password toggle
+        togglePassword.addEventListener('click', function() {
+            if (pdfPassword.type === 'password') {
+                pdfPassword.type = 'text';
+                togglePassword.classList.remove('fa-eye');
+                togglePassword.classList.add('fa-eye-slash');
+            } else {
+                pdfPassword.type = 'password';
+                togglePassword.classList.remove('fa-eye-slash');
+                togglePassword.classList.add('fa-eye');
+            }
+        });
+        
+        // Handle drag and drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            uploadArea.classList.add('highlight');
+        }
+        
+        function unhighlight() {
+            uploadArea.classList.remove('highlight');
+        }
+        
+        // Handle dropped files
+        uploadArea.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+        
+        // Handle clicked files
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+        
+        changeFileBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            fileInput.value = '';
+            fileInfo.classList.remove('show');
+            restrictionsInfo.style.display = 'none';
+            uploadArea.style.display = 'block';
+        });
+        
+        function handleFiles(files) {
+            if (files.length === 0) return;
+            
+            const file = files[0];
+            
+            // Check if file is PDF
+            if (!file.type.includes('pdf')) {
+                showStatus('Please upload a PDF file.', 'error');
+                return;
+            }
+            
+            // Update file info
+            fileName.textContent = file.name;
+            fileSize.textContent = formatFileSize(file.size);
+            
+            // Show file info and hide upload area
+            fileInfo.classList.add('show');
+            uploadArea.style.display = 'none';
+            
+            // Simulate reading PDF restrictions (in a real app, this would analyze the PDF)
+            setTimeout(() => {
+                showPdfRestrictions();
+            }, 500);
+        }
+        
+        function showPdfRestrictions() {
+            // In a real application, you would analyze the PDF for restrictions
+            // For demo purposes, we'll simulate finding some restrictions
+            
+            // Clear previous restrictions
+            restrictionsList.innerHTML = '';
+            
+            // Simulated restrictions (randomly generated for demo)
+            const simulatedRestrictions = [
+                { icon: 'fa-print', text: 'Printing: Not allowed' },
+                { icon: 'fa-edit', text: 'Modification: Not allowed' },
+                { icon: 'fa-copy', text: 'Copying: Allowed' },
+                { icon: 'fa-file-signature', text: 'Form filling: Not allowed' }
+            ];
+            
+            // Add restrictions to the list
+            simulatedRestrictions.forEach(restriction => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas ${restriction.icon}"></i> ${restriction.text}`;
+                restrictionsList.appendChild(li);
+            });
+            
+            // Show restrictions info
+            restrictionsInfo.style.display = 'block';
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Unlock PDF button click
+        unlockBtn.addEventListener('click', function() {
+            if (!fileInput.files.length) {
+                showStatus('Please select a PDF file first.', 'error');
+                return;
+            }
+            
+            // Show loading spinner
+            spinner.classList.add('active');
+            unlockBtn.disabled = true;
+            statusDiv.style.display = 'none';
+            
+            // Simulate processing (in a real app, this would upload to a server)
+            setTimeout(() => {
+                // Hide spinner
+                spinner.classList.remove('active');
+                
+                // Show success message
+                showStatus('PDF unlocked successfully! All restrictions have been removed.', 'success');
+                
+                // Show download button
+                downloadBtn.classList.add('show');
+                
+                // Enable unlock button
+                unlockBtn.disabled = false;
+                
+                // In a real application, you would set the download URL here
+                // downloadBtn.href = unlockedFileUrl;
+                
+                // Update restrictions list to show they've been removed
+                restrictionsList.innerHTML = '';
+                const li = document.createElement('li');
+                li.innerHTML = '<i class="fas fa-check-circle" style="color: var(--secondary-color)"></i> All restrictions removed';
+                restrictionsList.appendChild(li);
+                
+                // Track conversion
+                trackConversion('unlock_pdf');
+            }, 2000);
+        });
+        
+        function showStatus(message, type) {
+            statusDiv.textContent = message;
+            statusDiv.className = 'status ' + type;
+            statusDiv.style.display = 'block';
+        }
+        
+        // For demo purposes, simulate file download
+        downloadBtn.addEventListener('click', function(e) {
+            if (!fileInput.files.length) {
+                e.preventDefault();
+                showStatus('No file to download.', 'error');
+                return;
+            }
+            
+            // In a real application, this would download the unlocked file
+            // For demo, we'll just show a message
+            e.preventDefault();
+            showStatus('Download would start in a real application.', 'success');
+        });
+        
+        // SEO: Track file unlocks as conversions (example)
+        function trackConversion(action) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-YOUR_CONVERSION_ID/' + action,
+                    'value': 1.0,
+                    'currency': 'USD'
+                });
+            }
+        }
+    </script>
+    
+    <!-- Google Analytics (optional) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</body>
+</html>
